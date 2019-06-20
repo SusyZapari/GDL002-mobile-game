@@ -1,9 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Card from './components/Card';
-import Header from './components/Header';
-//import './App.css';
-//import Board from './components/Board';
 
 export default function App() {
   return (
@@ -24,30 +21,3 @@ export default function App() {
     </View>
   );
 }
-
-/*class App extends Component {
-  render () {
-    return (
-      <View className="App">
-      <Header/>
-      <Board/>
-      </View>
-    )
-  }
-}*/
-//<TouchableOpacity style={styles.CardStyle} activeOpacity={0.5}>
-  //  <Image
-    // source={require('./Images/banana.png')}
-     //style={styles.ImageIconStyle}
-    ///>
-    //<View style={styles.SeparatorLine} />
-    //<Text style={styles.TextStyle}> Iniciar </Text>
-//</TouchableOpacity>
-/*const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});*/
