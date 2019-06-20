@@ -3,21 +3,27 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Card from './components/Card';
 
 export default function App() {
-  return (
-    <View>
-      <Card type='manzana'></Card> 
-      <Card type='pina'></Card>
-      <Card type='pera'></Card>
-      <Card type='banana'></Card>
-      <Card type='cerezas'></Card>
-      <Card type='fresa'></Card>
-      <Card type='kiwi'></Card>
-      <Card type='mango'></Card>
-      <Card type='naranja'></Card>
-      <Card type='sandia'></Card>
-      <Card type='uvas'></Card>
-      <Card type='blueberry'></Card>
+  let cards = new Array(cardTypes.length);
+  let i = 0;
+  let generatedCards = 0;
+  cards.fill(null);
 
+  while(generatedCards<cardTypes.length){
+    i = Math.floor(Math.random() * (cardTypes.length));
+    console.log('i=',i);
+    if (cards[i] == null) {
+      cards[generatedCards]=<Card type={cardTypes[i]}></Card>;
+      generatedCards++;
+    }
+  }
+  return ( 
+    <View>
+      {cards}
+      
     </View>
   );
 }
+
+
+const cardTypes = ['manzana', 'pina', 'pera','banana', 'cerezas', 'fresa',
+'kiwi', 'mango', 'naranja', 'sandia', 'uvas', 'blueberry'];
