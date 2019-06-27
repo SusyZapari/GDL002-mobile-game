@@ -20,6 +20,8 @@ class Card extends Component {
         this.setState({
             cardImage: nextCardImage
           });
+
+        this.props.checkPairs(nextCardImage);
     }
     render (){
         return (
