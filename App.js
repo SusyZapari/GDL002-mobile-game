@@ -10,14 +10,14 @@ export default function App() {
 
   while(generatedCards<cardTypes.length){
     i = Math.floor(Math.random() * (cardTypes.length));
-    console.log('i=',i);
     if (cards[i] == null) {
-      cards[generatedCards]=<Card type={cardTypes[i]}></Card>;
+      cards[i]=<Card type={cardTypes[i]}></Card>;
       generatedCards++;
     }
   }
+
   return ( 
-    <View>
+    <View style={styles.container}>
       {cards}
       
     </View>
@@ -25,5 +25,19 @@ export default function App() {
 }
 
 
-const cardTypes = ['manzana', 'pina', 'pera','banana', 'cerezas', 'fresa',
-'kiwi', 'mango', 'naranja', 'sandia', 'uvas', 'blueberry'];
+const cardTypes = [
+  'manzana', 'pina' ,'pera','banana', 'cerezas', 'fresa',
+  'kiwi', 'mango', 'naranja', 'sandia', 'uvas', 'blueberry',
+  'manzana', 'pina' ,'pera','banana', 'cerezas', 'fresa',
+  'kiwi', 'mango', 'naranja', 'sandia', 'uvas', 'blueberry'
+];
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginTop: '30%',
+  }
+})

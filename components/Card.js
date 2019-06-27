@@ -51,16 +51,16 @@ const images = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 10
+    //justifyContent: 'center',
+    //flexDirection: 'row',
+    paddingHorizontal: 10,
   },
   button: {
     alignItems: 'center',
     backgroundColor: '#DDDDDD',
     padding: 10,
-    width: 100,
-    height: 100,
-
+    width: 90,
+    height: 90
   },
   countContainer: {
     alignItems: 'center',
