@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 import Card from './Card';
 
 class Home extends Component {
@@ -8,11 +8,28 @@ class Home extends Component {
         this.state = {
             prevCard: null,
             lifes: 5,
-            matches: 0
+            matches: 0,
+            cards: this.shuffleCards()
         }
     }
-    render (){
-    
+
+    restartGame = () => {
+        const cards = this.shuffleCards(); 
+        this.setState({
+            prevCard: null,
+            lifes: 5,
+            matches: 0,
+            cards: null
+        });
+
+        setTimeout(
+            () =>{ this.setState({ cards: cards})},
+            2000
+        );
+
+    }
+
+    shuffleCards = () => {
         let cards = new Array(cardTypes.length);
         let i = 0;
         let generatedCards = 0;
@@ -21,27 +38,34 @@ class Home extends Component {
         while(generatedCards<cardTypes.length){
             i = Math.floor(Math.random() * (cardTypes.length));
             if (cards[i] == null) {
-            cards[i]=<Card type={cardTypes[i]} checkPairs={this.checkPairs}></Card>;
-            generatedCards++;
+                cards[i]=<Card type={cardTypes[generatedCards]} checkPairs={this.checkPairs}></Card>;
+                generatedCards++;
             }
         }
-    
+        
+        return cards;
+    }
+
+    render () {
         return (
             <View>
                 <Text style={headerSection.container}>
                     Vidas: <Text style={headerSectionValue.container}>{this.state.lifes}</Text>
                     <Text style={{color: "white"}}>-----</Text>Pares:<Text style={headerSectionValue.container}>{this.state.matches}</Text>
                 </Text>
+                <Button
+                    onPress={this.restartGame}
+                    title="Reiniciar"
+                    color="#841584"
+                />
                 <View style={styles.container}>
-                    {cards}    
+                    {this.state.cards}    
                 </View>
             </View>
         );
     }
 
     checkPairs = (selectedCard) => {
-        console.log("selectedCard:", selectedCard);
-        console.log("prevCard:", this.state.prevCard);
 
         if (selectedCard != "marcapersonal") {
             if (this.state.prevCard == null){

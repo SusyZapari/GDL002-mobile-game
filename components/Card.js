@@ -3,13 +3,14 @@ import { StyleSheet, Text, View, Button, TouchableOpacity, Image } from 'react-n
 //import './Card.css';
 
 class Card extends Component {
-    constructor() {
+    constructor(props) {
         super();
+
         this.state = {
             cardImage: 'marcapersonal'
         }
     }
-    flipCard= ()=> {
+    flipCard = ()=> {
         let nextCardImage = '';
         if (this.state.cardImage == 'marcapersonal'){
             nextCardImage = this.props.type;
@@ -19,10 +20,11 @@ class Card extends Component {
         }
         this.setState({
             cardImage: nextCardImage
-          });
+        });
 
         this.props.checkPairs(nextCardImage);
     }
+
     render (){
         return (
         <TouchableOpacity onPress={this.flipCard}>
